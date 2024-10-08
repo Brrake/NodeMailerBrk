@@ -1,7 +1,10 @@
 const express = require("express");
+const helmet = require("helmet");
+require('dotenv').config();
+
 /* App */
 const app = express();
-require('dotenv').config();
+app.use(helmet());
 
 /* Body Parser */
 require('./app/utils/body-parser')(app);
@@ -11,5 +14,5 @@ require('./app/routes')(app);
 /* Start Server */
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log('Server is running on port : ' + PORT)
+    console.log('Server is running on : http://localhost:' + PORT)
 });
