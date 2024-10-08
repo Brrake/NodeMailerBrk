@@ -1,74 +1,96 @@
 # NodeMailerBrk
 
-This App is an easy example of integrating a Email Server into a Node.js App
+NodeMailerBrk is a simple and effective example of integrating an email server into a Node.js application. This app leverages **NodeMailer** to send emails via an SMTP server, providing a quick and easy demonstration of email integration in web services.
 
-Repository GITHUB : [NodeMailerBrk](https://github.com/Brrake/NodeMailerBrk)
+**GitHub Repository**: [NodeMailerBrk](https://github.com/Brrake/NodeMailerBrk)
 
 ## Requirements
 
-For the installation we need to use the following versions of :
+To use this project, ensure that you have the following installed:
 
-Node.JS : [v20.13.1](https://nodejs.org/dist/v20.13.1/node-v20.13.1-x64.msi)
+- **Node.js**: [v20.13.1](https://nodejs.org/dist/v20.13.1/node-v20.13.1-x64.msi)
 
 ## Installation
 
-First of all you need to install the library running :
+Clone the repository and install the required dependencies by running:
 
+```bash
+npm install
 ```
- npm i
-```
-
-
-
 
 ## Environment Variables
-Before start the server we need to set the correct environment variables regarding our email server.
-Below you will find all the information you need to correctly use the templates and the various components
 
-#### Input
+Before starting the server, you need to configure the environment variables for your email server. Below is a list of all the required environment variables and their respective descriptions.
 
-| Property          | Type               | Default                         | Description                                                                         | Required |
-|-------------------|--------------------|---------------------------------|-------------------------------------------------------------------------------------|----------|
-| `APP_NAME`        | `string`           | `NodeMailerBRK`                 | App and Emails name                                                                 | true     |
-| `PORT`            | `number`           |`8080`                           | Local server running port                                                           | true     |
-| `MAIL_HOST`       | `string`           | `mail.mailserver.com`           | Email Server SMTP address or host name                                              | true     |
-| `MAIL_PORT`       | `number`           |`465`                            | Email Server SMTP port                                                              | true     |
-| `MAIL_SECURE`     | `boolean`          | `true`                          | Email Server SMTP secure auth                                                       | true     |
-| `MAIL_USER`       | `string`           | `info@mailserver.com`           | Email Server SMTP username, tipically an email                                      | true     |
-| `MAIL_PASS`       | `string`           | `123456789`                     | Email Server SMTP password                                                          | true     |
-| `MAIL_DEFAULT`    | `string`           | `test.receiver@mailserver.com`  | Email where send test email if subject or to parameters of api call are not set     | true     |
+| Property          | Type      | Default                         | Description                                                         | Required |
+|-------------------|-----------|---------------------------------|---------------------------------------------------------------------|----------|
+| `APP_NAME`        | `string`  | `NodeMailerBRK`                 | Application name (used in emails and logging)                       | true     |
+| `PORT`            | `number`  | `8080`                          | Local server port where the app will be hosted                      | true     |
+| `MAIL_HOST`       | `string`  | `mail.mailserver.com`           | SMTP server address or hostname                                     | true     |
+| `MAIL_PORT`       | `number`  | `465`                           | SMTP server port                                                    | true     |
+| `MAIL_SECURE`     | `boolean` | `true`                          | Whether to use secure SMTP (true for port 465, false for others)    | true     |
+| `MAIL_USER`       | `string`  | `info@mailserver.com`           | SMTP username (usually an email address)                            | true     |
+| `MAIL_PASS`       | `string`  | `123456789`                     | SMTP password                                                       | true     |
+| `MAIL_DEFAULT`    | `string`  | `test.receiver@mailserver.com`  | Default recipient for test emails if not provided in the request    | true     |
 
-
-## Starting
-
-Run the following command to start the server :
+### Example `.env` File:
 
 ```
- npm start
+APP_NAME=NodeMailerBRK
+PORT=8080
+MAIL_HOST=mail.mailserver.com
+MAIL_PORT=465
+MAIL_SECURE=true
+MAIL_USER=info@mailserver.com
+MAIL_PASS=123456789
+MAIL_DEFAULT=test.receiver@mailserver.com
 ```
 
-Try now to reach the local server from your browser typing [`http://localhost:8080`](http://localhost:8080)
+## Starting the Server
 
-If you see these result into your browser page then your app is running correctly :
+To start the application, use the following command:
 
+```bash
+npm start
 ```
- {"message":"NodeMailer BRK application."}
+
+Once the server is running, you can access it at [`http://localhost:8080`](http://localhost:8080). If the app is set up correctly, you should see the following response:
+
+```json
+{"message": "NodeMailer BRK application."}
 ```
 
-You are now able to make post requests to the email endpoint 
+## API Endpoints
 
-## Endpoints
+The application provides the following API endpoints:
 
+| Endpoint      | Method   | Description                        | Payload                           | Required |
+|---------------|----------|------------------------------------|-----------------------------------|----------|
+| `/`           | `GET`    | Returns a simple welcome message   |                                   | true     |
+| `/email`      | `POST`   | Sends an email via the SMTP server | [`EmailPayload`](#emailpayload)   | true     |
 
-| Endpoint          | Type      | Payload                         | Description                       | Required |
-|-------------------|-----------|---------------------------------|-----------------------------------|----------|
-| `/`               | `GET`     | ``                              | Get main page                     | true     |
-| `/email`          | `POST`    |[`EmailPayload`](#emailpayload)  | Send email using setted envs      | true     |
+### EmailPayload
 
-#### EmailPayload
+The `POST /email` endpoint accepts the following JSON payload:
 
 | Field     | Type      | Example                         | Description                       | Required |
 |-----------|-----------|---------------------------------|-----------------------------------|----------|
-| `subject` | `string`  | `Messaggio Ricevuto!`           | Subject of the email              | true     |
-| `to`      | `string`  | `test.receiver@mailserver.com`  | Email that will receive the email | true     |
+| `subject` | `string`  | `Messaggio Ricevuto!`           | Subject line for the email        | true     |
+| `to`      | `string`  | `test.receiver@mailserver.com`  | Recipient email address           | true     |
 
+### Example EmailPayload
+
+```json
+{
+  "subject": "Messaggio Ricevuto!",
+  "to": "test.receiver@mailserver.com"
+}
+```
+
+## Contribution
+
+Contributions are welcome! Feel free to open issues, submit pull requests, or suggest improvements to make this project better.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
