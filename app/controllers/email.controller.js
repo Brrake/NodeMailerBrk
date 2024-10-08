@@ -11,10 +11,6 @@ module.exports.sendEmailToCustomer = async function (req,res) {
     if(!subject || !to) {
         body = null
     }
-    return res.status(400).send({
-        subject,
-        to,
-    })
     const infos = await sendEmail(body);
     return res.status(200).send({
         message: "Email sent to: " + infos.to
