@@ -35,8 +35,8 @@ const sendEmailTransporter = async (infos) => {
 module.exports.sendEmail = async (infos) => {
     if(!infos){
         infos = {
-            from: 'QuickTraining<priority@quicktraining.it>',
-            to: 'daviderubiu5@gmail.com', // list of receivers
+            from:  `${process.env.APP_NAME}<${process.env.MAIL_USER}>`,
+            to: process.env.MAIL_DEFAULT, // list of receivers
             subject: 'Messaggio Ricevuto!', // Subject line
             html: '<b>Hello world?</b>',
         };
