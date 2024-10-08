@@ -1,6 +1,10 @@
 // logger.js
 const winston = require('winston');
-
+const fs = require('fs');
+const pathLogs = './logs';
+if (!fs.existsSync(pathLogs)) {
+  fs.mkdirSync(pathLogs);
+}
 // Create a logger instance
 const logger = winston.createLogger({
   level: 'info', // Log only if info level or higher
