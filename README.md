@@ -22,8 +22,6 @@ npm install
 
 Before starting the server, you need to configure the environment variables for your email server. Below is a list of all the required environment variables and their respective descriptions.
 
-> Note : To make dotenv work properly you have to create a new file `.env` into the root folder of the project and fill it with your server informations. You can find an example of a .env file into the root folder of the project called `.env.example`
-
 | Property          | Type      | Default                         | Description                                                         | Required |
 |-------------------|-----------|---------------------------------|---------------------------------------------------------------------|----------|
 | `APP_NAME`        | `string`  | `NodeMailerBRK`                 | Application name (used in emails and logging)                       | true     |
@@ -47,6 +45,8 @@ MAIL_USER=info@mailserver.com
 MAIL_PASS=123456789
 MAIL_DEFAULT=test.receiver@mailserver.com
 ```
+> Note : To make dotenv work properly you have to create a new file `.env` into the root folder of the project and fill it with your server informations. You can find an example of a .env file into the root folder of the project called `.env.example`
+
 
 ## Starting the Server
 
