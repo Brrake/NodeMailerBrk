@@ -1,4 +1,5 @@
 const logger = require('./logger');
+const { startSpinner } = require('./spinner');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 const transporter = nodemailer.createTransport({
@@ -10,17 +11,6 @@ const transporter = nodemailer.createTransport({
         pass: process.env.MAIL_PASS
     },
 });
-function startSpinner() {
-    const spinnerChars = ['|', '/', '-', '\\'];
-    let index = 0;
-
-    const intervalId = setInterval(() => {
-        process.stdout.write(`\r${spinnerChars[index]}`); // Update spinner
-        index = (index + 1) % spinnerChars.length; // Loop through spinner characters
-    }, 100); // Update spinner every 100ms
-
-    return intervalId; // Return the interval ID to stop later
-}
 const sendEmailTransporter = async (infos) => {
     try {
         const intervalId = startSpinner();
@@ -38,7 +28,7 @@ module.exports.sendEmail = async (infos) => {
             from:  `${process.env.APP_NAME}<${process.env.MAIL_USER}>`,
             to: process.env.MAIL_DEFAULT, // list of receivers
             subject: 'Messaggio Ricevuto!', // Subject line
-            html: '<b>Hello world?</b>',
+            html: '<b>Hello world</b>',
         };
     }
     logger.info('Sending email to ' + infos.to + ' ...');
