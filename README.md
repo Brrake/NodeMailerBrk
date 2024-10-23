@@ -40,14 +40,17 @@ Before starting the server, you need to configure the environment variables for 
 ### Example `.env` File:
 
 ```
-APP_NAME=NodeMailerBRK
+# APP INFO 
+APP_NAME='NodeMailerBRK'
 PORT=8080
+# SMTP INFO
 MAIL_HOST=mail.mailserver.com
 MAIL_PORT=465
 MAIL_SECURE=true
 MAIL_USER=info@mailserver.com
 MAIL_PASS=123456789
 MAIL_DEFAULT=test.receiver@mailserver.com
+# DKIM INFO
 ALLOW_DKIM=false
 DKIM_DOMAIN=mailserver.com
 DKIM_SELECTOR=default
