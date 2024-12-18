@@ -1,4 +1,6 @@
 .env
+.env.at
+.env.qt
 node_modules
 logs/*.log
 dkim

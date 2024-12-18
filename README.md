@@ -29,6 +29,7 @@ Before starting the server, you need to configure the environment variables for 
 | `MAIL_HOST`         | `string`  | `mail.mailserver.com`           | SMTP server address or hostname                                     | true     |
 | `MAIL_PORT`         | `number`  | `465`                           | SMTP server port                                                    | true     |
 | `MAIL_SECURE`       | `boolean` | `true`                          | Whether to use secure SMTP (true for port 465, false for others)    | true     |
+| `MAIL_FROM`         | `string`  | `'MailServer.it<priority@mailserver.it>'`           | SMTP from field                            | true     |
 | `MAIL_USER`         | `string`  | `info@mailserver.com`           | SMTP username (usually an email address)                            | true     |
 | `MAIL_PASS`         | `string`  | `123456789`                     | SMTP password                                                       | true     |
 | `MAIL_DEFAULT`      | `string`  | `test.receiver@mailserver.com`  | Default recipient for test emails if not provided in the request    | true     |

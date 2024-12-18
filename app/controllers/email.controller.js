@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports.sendEmailToCustomer = async function (req,res) {
     const { subject, to } = req.body
     let body = {
-        from: process.env.MAIL_USER,
+        from: process.env.MAIL_FROM,
         to: to, // list of receivers
         subject: subject, // Subject line
         html: '<b>Hello world?</b>',
