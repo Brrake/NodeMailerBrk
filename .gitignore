@@ -1,6 +1,7 @@
 .env
 .env.at
 .env.qt
+.env.laf
 node_modules
 logs/*.log
 dkim
