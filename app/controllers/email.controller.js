@@ -2,6 +2,11 @@ const { sendEmail } = require('../utils/email');
 require('dotenv').config();
 module.exports.sendEmailToCustomer = async function (req,res) {
     const { subject, to } = req.body
+    if(!subject || !to) {
+        return res.status(400).send({
+            message: "Missing subject or to"
+        })
+    }
     let body = {
         from: process.env.MAIL_FROM,
         to: to, // list of receivers
